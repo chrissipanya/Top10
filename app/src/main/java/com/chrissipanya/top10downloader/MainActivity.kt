@@ -2,16 +2,11 @@ package com.chrissipanya.top10downloader
 
 import android.content.Context
 import android.os.AsyncTask
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.widget.ArrayAdapter
 import android.widget.ListView
 import kotlinx.android.synthetic.main.activity_main.*
-import java.io.IOException
-import java.lang.Exception
-import java.net.HttpURLConnection
-import java.net.MalformedURLException
 import java.net.URL
 import kotlin.properties.Delegates
 
@@ -24,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         Log.d(TAG, "onCreate called")
-        downloadData.execute("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=10/xml")
+        downloadData.execute("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=200/xml")
         Log.d(TAG, "onCreate: done")
     }
 

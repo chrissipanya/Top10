@@ -3,7 +3,6 @@ package com.chrissipanya.top10downloader
 import android.util.Log
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
-import java.lang.Exception
 
 class XMLParser {
     private val TAG = "XMLParser"
@@ -22,13 +21,13 @@ class XMLParser {
             xpp.setInput(xmlData.reader())
             var eventType = xpp.eventType
             var currentRecord = FeedEntryModel()
-            while (eventType != XmlPullParser.END_DOCUMENT){
+            while (eventType != XmlPullParser.END_DOCUMENT) {
                 val tagName = xpp.name?.toLowerCase()
-                when(eventType){
+                when (eventType) {
 
                     XmlPullParser.START_TAG -> {
                         Log.d(TAG, "parse: Starting tag for $tagName")
-                        if (tagName == "entry"){
+                        if (tagName == "entry") {
                             inEntry = true
                         }
                     }
@@ -37,8 +36,8 @@ class XMLParser {
 
                     XmlPullParser.END_TAG -> {
                         Log.d(TAG, "parse: Ending tag for $tagName")
-                        if (inEntry){
-                            when(tagName){
+                        if (inEntry) {
+                            when (tagName) {
                                 "entry" -> {
                                     parser.add(currentRecord)
                                     inEntry = false
@@ -58,13 +57,11 @@ class XMLParser {
                 eventType = xpp.next()
             }
 
-            for (app in parser){
+            for (app in parser) {
                 Log.d(TAG, "********************")
                 Log.d(TAG, app.toString())
             }
-        }
-
-        catch (e: Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
             status = false
         }
