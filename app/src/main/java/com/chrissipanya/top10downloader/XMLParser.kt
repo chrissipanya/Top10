@@ -57,10 +57,10 @@ class XMLParser {
                 eventType = xpp.next()
             }
 
-            for (app in parser) {
-                Log.d(TAG, "********************")
-                Log.d(TAG, app.toString())
-            }
+//            for (app in parser) {
+//                Log.d(TAG, "********************")
+//                Log.d(TAG, app.toString())
+//            }
         } catch (e: Exception) {
             e.printStackTrace()
             status = false
